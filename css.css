@@ -64,6 +64,11 @@ body {
 
 .logo span {
     color: var(--text);
+    transition: color 0.3s;
+}
+
+.dark-theme .logo span {
+    color: #008C45;
 }
 
 .nav-links {
