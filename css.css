@@ -8,6 +8,13 @@
     --success: #008C45;
 }
 
+.dark-theme {
+    --bg-dark: #1a1a1a;
+    --bg-light: #2d2d2d;
+    --text: #f0f0f0;
+    --bg-light: #333333;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -20,6 +27,7 @@ body {
     color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background 0.3s, color 0.3s;
 }
 
 .container {
@@ -65,6 +73,21 @@ body {
 
 .nav-links li {
     margin-left: 2rem;
+}
+
+#themeToggle a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#themeToggle i {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.dark-theme #themeToggle i {
+    transform: rotate(180deg);
 }
 
 .nav-links a {
