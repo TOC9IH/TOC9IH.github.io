@@ -58,9 +58,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+     const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Проверяем сохраненную тему в localStorage
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+    
+    // Обработчик клика по переключателю
+    themeToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.toggle('dark-theme');
+        
+        if (document.body.classList.contains('dark-theme')) {
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+    
     // Летающие баги при клике
     document.addEventListener('click', function(e) {
-        if (e.target.id !== 'bamBtn' && !e.target.closest('.modal')) {
+        if (e.target.id !== 'bamBtn' && !e.target.closest('.modal') && e.target.id !== 'themeToggle') {
             const bugs = ['🐛', '💥', '🔥', '💻'];
             const randomBug = bugs[Math.floor(Math.random() * bugs.length)];
             
